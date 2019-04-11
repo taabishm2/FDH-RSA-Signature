@@ -20,14 +20,14 @@ class verifier:
         print("File to be checked:",end=" ")
         
         inp = input()
-        
-        inp = fdh.fdh(inp,(len(bin(n))-2)) #TEST
-        
-        signaturec = hex(pow(ciphertext,public_key,n))
 
-        print(inp,self.signaturec)
+        inp = fileOp.read_large_data(inp)
         
-        if inp == signaturec:
+        inp = fdh.fdh(inp,(len(bin(n))-2))
+        
+        signaturec = pow(ciphertext,public_key,n)
+        
+        if signaturec - int(inp,16) == 0:
             
             print("VERIFIED!")
             

@@ -3,7 +3,6 @@ import fdh
 import modInverse
 import initRSAsignature
 import coprime
-import keyGeneration
 
 global public_key, private_key, n
 
@@ -13,10 +12,6 @@ class signer:
     def __init__(self):
 
         global public_key, private_key, n
-
-        initRSAsignature.generate_prime_pair()  #Execute only once
-        
-        keyGeneration.gen_keys()
 
         public_key = fileOp.read_list("FpublicKey")[1]
 
@@ -31,8 +26,10 @@ class signer:
         print("File to be signed:",end=" ")
         
         inp = input()
+
+        inp = fileOp.read_large_data(inp)
         
-        inp = fdh.fdh(inp,(len(bin(n))-2)) #TEST
+        inp = fdh.fdh(inp,(len(bin(n))-2)) 
         
         fileOp.write_list("Fsignature",[inp])
 

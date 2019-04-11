@@ -10,6 +10,6 @@ def fdh(string, n=2048):
         
         result.append( sha256((string+str(i)).encode()).hexdigest() )
         
-    result = ''.join(result)[:(n-1)]
+    result = ''.join(result)[:-1]
     
     return result
