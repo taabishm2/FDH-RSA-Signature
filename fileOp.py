@@ -1,6 +1,6 @@
 import fdh
 
-save_path = 'C:/Users/Tabish/Desktop/Github/Crypto/FDH_RSA/Files/'
+save_path = './Files/'
 
 def write_list(filename,l):
     '''write a list l into file'''
@@ -14,7 +14,7 @@ def read_list(filename):
     '''return data from file read as list, READS ONLY INTEGERS'''
 
     completeName = save_path + filename + '.txt'
-    
+
 
     file = open(completeName,'r')
     arr = file.read().split(',')
@@ -33,7 +33,7 @@ def read_large_data(filename):
     '''reads basic data from file'''
 
     msg = ""
-    
+
     with open(save_path + filename + ".txt") as infile:
         for line in infile:
             msg += line
